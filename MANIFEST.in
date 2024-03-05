@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include biomak *.css
+recursive-include biomak *.csv
+recursive-include biomak *.html
+recursive-include biomak *.ico
+recursive-include biomak *.js
+recursive-include biomak *.json
+recursive-include biomak *.md
+recursive-include biomak *.png
+recursive-include biomak *.py
+recursive-include biomak *.svg
+recursive-include biomak *.txt
+recursive-exclude biomak *.pyc
