@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{sale_month}-{year}-{#####}",
+ "creation": "2024-03-06 22:28:00.992186",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "sale_month",
+  "year",
+  "column_break_crg74",
+  "mso",
+  "section_break_h9wge",
+  "sales_entry_items",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "sale_month",
+   "fieldtype": "Select",
+   "label": "Sale Month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Link",
+   "label": "Year",
+   "options": "Years"
+  },
+  {
+   "fieldname": "column_break_crg74",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mso",
+   "fieldtype": "Link",
+   "label": "MSO",
+   "options": "Medical Sales Officer"
+  },
+  {
+   "fieldname": "section_break_h9wge",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sales_entry_items",
+   "fieldtype": "Table",
+   "label": "Sales Entry Items",
+   "options": "Sales Entry Items"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Sales Entry",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-03-06 22:30:07.940839",
+ "modified_by": "Administrator",
+ "module": "Biomak",
+ "name": "Sales Entry",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
