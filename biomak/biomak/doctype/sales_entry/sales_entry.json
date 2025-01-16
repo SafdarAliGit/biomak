@@ -8,7 +8,7 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sale_month",
+  "month",
   "year",
   "column_break_crg74",
   "mso",
@@ -19,16 +19,12 @@
  ],
  "fields": [
   {
-   "fieldname": "sale_month",
-   "fieldtype": "Select",
-   "label": "Sale Month",
-   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
-  },
-  {
    "fieldname": "year",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Year",
-   "options": "Years"
+   "options": "Years",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_crg74",
@@ -37,8 +33,10 @@
   {
    "fieldname": "mso",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "MSO",
-   "options": "Medical Sales Officer"
+   "options": "Medical Sales Officer",
+   "reqd": 1
   },
   {
    "fieldname": "section_break_h9wge",
@@ -64,14 +62,24 @@
    "fetch_from": "mso.rm",
    "fieldname": "rm",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "RM",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Sale Month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-16 19:13:50.526847",
+ "modified": "2025-01-16 23:07:49.428225",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Sales Entry",

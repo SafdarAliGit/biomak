@@ -10,11 +10,12 @@
  "field_order": [
   "plan",
   "date",
-  "month",
+  "region",
   "column_break_eyxjm",
+  "month",
+  "year",
   "mso",
   "rm",
-  "region",
   "section_break_w991b",
   "investment_entry_items",
   "amended_from"
@@ -44,14 +45,20 @@
   {
    "fieldname": "mso",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "MSO",
-   "options": "Medical Sales Officer"
+   "options": "Medical Sales Officer",
+   "reqd": 1
   },
   {
+   "default": "None",
+   "fetch_from": "mso.mso_name",
    "fieldname": "rm",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "RM",
-   "options": "Regional Manager"
+   "read_only": 1,
+   "reqd": 1
   },
   {
    "fieldname": "section_break_w991b",
@@ -75,14 +82,24 @@
   {
    "fieldname": "month",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Month",
-   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+   "reqd": 1
+  },
+  {
+   "fieldname": "year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Year",
+   "options": "Years",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-16 18:45:25.227191",
+ "modified": "2025-01-16 23:10:39.690492",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Investment Entry",

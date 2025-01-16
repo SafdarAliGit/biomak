@@ -7,8 +7,16 @@
  "engine": "InnoDB",
  "field_order": [
   "doctor",
+  "mso",
+  "rm",
+  "month",
+  "year",
   "medical_store",
-  "amount"
+  "amount",
+  "specialist",
+  "town",
+  "region",
+  "address"
  ],
  "fields": [
   {
@@ -30,12 +38,80 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Amount"
+  },
+  {
+   "default": "None",
+   "fieldname": "mso",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "MSO",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "rm",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "RM",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "month",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Month",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fieldname": "year",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Year",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "doctor.specialist",
+   "fieldname": "specialist",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Specialist",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "doctor.town",
+   "fieldname": "town",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Town",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "doctor.region",
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Region",
+   "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "doctor.address",
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Address",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-03-06 22:18:04.398666",
+ "modified": "2025-01-16 22:34:45.554077",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Sales Entry Items",

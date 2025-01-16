@@ -27,24 +27,32 @@
   {
    "fieldname": "specialist",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Specialist",
-   "options": "\nGP\nPHY\nORH\nGYN"
+   "options": "\nGP\nPHY\nORH\nGYN",
+   "reqd": 1
   },
   {
    "fieldname": "address",
    "fieldtype": "Small Text",
-   "label": "Address"
+   "in_list_view": 1,
+   "label": "Address",
+   "reqd": 1
   },
   {
    "fieldname": "town",
    "fieldtype": "Small Text",
-   "label": "Town"
+   "in_list_view": 1,
+   "label": "Town",
+   "reqd": 1
   },
   {
    "fieldname": "region",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Region",
-   "options": "Region"
+   "options": "Region",
+   "reqd": 1
   },
   {
    "fieldname": "contact_number",
@@ -63,7 +71,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-03-06 21:23:45.796910",
+ "modified": "2025-01-16 22:42:41.490459",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Doctor",

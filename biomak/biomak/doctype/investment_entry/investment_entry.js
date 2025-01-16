@@ -11,6 +11,9 @@ frappe.ui.form.on('Investment Entry Items', {
     },
     sale_multiplier: function (frm, cdt, cdn) {
         calculate_sale_target(frm, cdt, cdn);
+    },
+    investment_entry_items_add: function (frm, cdt, cdn) {
+        copy_values_to_child(frm, cdt, cdn);
     }
 });
 
@@ -21,3 +24,30 @@ function calculate_sale_target(frm, cdt, cdn) {
     let sale_target = investment_amount * sale_multiplier; // Calculate sale target
     frappe.model.set_value(cdt, cdn, "sale_target", sale_target); // Update the field
 }
+
+function copy_values_to_child(frm, cdt, cdn) {
+    let row = locals[cdt][cdn]; // Access the current row
+
+    // Extract values from the parent form
+    let mso = frm.doc.mso;
+    let rm = frm.doc.rm;
+    let month = frm.doc.month;
+    let year = frm.doc.year;
+
+    // Validate values and throw an error if any are missing
+    if (!mso || !rm || !month || !year) {
+        let missingFields = [];
+        if (!mso) missingFields.push("MSO");
+        if (!rm) missingFields.push("RM");
+        if (!month) missingFields.push("Month");
+        if (!year) missingFields.push("Year");
+        frappe.throw(__(`The following fields are missing: ${missingFields.join(", ")}`));
+    }
+
+    // Set values in the child table row
+    frappe.model.set_value(cdt, cdn, "mso", mso);
+    frappe.model.set_value(cdt, cdn, "rm", rm);
+    frappe.model.set_value(cdt, cdn, "month", month);
+    frappe.model.set_value(cdt, cdn, "year", year);
+}
+
