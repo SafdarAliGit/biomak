@@ -12,6 +12,7 @@
   "year",
   "column_break_crg74",
   "mso",
+  "rm",
   "section_break_h9wge",
   "sales_entry_items",
   "amended_from"
@@ -57,12 +58,20 @@
    "options": "Sales Entry",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "default": "None",
+   "fetch_from": "mso.rm",
+   "fieldname": "rm",
+   "fieldtype": "Data",
+   "label": "RM",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-06 22:30:07.940839",
+ "modified": "2025-01-16 19:13:50.526847",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Sales Entry",

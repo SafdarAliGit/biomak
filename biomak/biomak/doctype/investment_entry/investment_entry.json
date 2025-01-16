@@ -10,10 +10,11 @@
  "field_order": [
   "plan",
   "date",
-  "region",
+  "month",
   "column_break_eyxjm",
   "mso",
   "rm",
+  "region",
   "section_break_w991b",
   "investment_entry_items",
   "amended_from"
@@ -70,12 +71,18 @@
    "options": "Investment Entry",
    "print_hide": 1,
    "read_only": 1
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2024-03-06 22:03:37.190106",
+ "modified": "2025-01-16 18:45:25.227191",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Investment Entry",

@@ -7,7 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "doctor",
-  "amount"
+  "sale_multiplier",
+  "investment_amount",
+  "sale_target"
  ],
  "fields": [
   {
@@ -18,16 +20,28 @@
    "options": "Doctor"
   },
   {
-   "fieldname": "amount",
+   "fieldname": "investment_amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
-   "label": "Amount"
+   "label": "Investment Amount"
+  },
+  {
+   "default": "0",
+   "fieldname": "sale_target",
+   "fieldtype": "Float",
+   "label": "Sale Target",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sale_multiplier",
+   "fieldtype": "Float",
+   "label": "Sale Multiplier"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-03-06 21:57:50.202645",
+ "modified": "2025-01-16 18:59:49.747366",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Investment Entry Items",
