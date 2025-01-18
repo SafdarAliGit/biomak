@@ -14,7 +14,9 @@ frappe.query_reports["Investment And Sales Plan"] = {
             "fieldname": "mso",
             "label": __("MSO"),
             "fieldtype": "Link",
-            "options": "Medical Sales Officer"
+            "options": "Medical Sales Officer",
+            "reqd": 1
+
         },
         {
             "fieldname": "rm",

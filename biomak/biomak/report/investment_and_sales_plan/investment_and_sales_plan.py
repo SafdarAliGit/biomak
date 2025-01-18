@@ -41,12 +41,12 @@ def get_data(filters):
         i.mso AS mso,
         i.rm AS rm,
         i.sale_target,
-        SUM(i.amount) AS investment_amount,
-        SUM(s.amount) AS sale_amount
+        i.amount AS investment_amount,
+        s.amount AS sale_amount
     FROM
         `tabInvestment Entry Items` i
     JOIN 
-        `tabSales Entry Items` s ON i.doctor = s.doctor
+        `tabSales Entry Items` s ON i.mso = s.mso
     WHERE
     """
 
