@@ -41,8 +41,11 @@ def get_data(filters):
         i.mso AS mso,
         i.rm AS rm,
         i.sale_target,
-        i.amount AS investment_amount,
-        s.amount AS sale_amount
+        SUM(i.amount) AS investment_amount,
+        SUM(s.amount) AS sale_amount,
+        s.target AS sale_target,
+        s.medical_store AS medical_store
+        
     FROM
         `tabInvestment Entry Items` i
     JOIN 
