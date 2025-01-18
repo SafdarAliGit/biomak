@@ -43,7 +43,7 @@ def get_data(filters):
         i.sale_target,
         SUM(i.amount) AS investment_amount,
         SUM(s.amount) AS sale_amount,
-        s.target AS sale_target,
+        s.sale_target AS sale_target,
         s.medical_store AS medical_store
         
     FROM
