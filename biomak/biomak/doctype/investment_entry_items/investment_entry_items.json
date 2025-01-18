@@ -12,7 +12,7 @@
   "month",
   "year",
   "sale_multiplier",
-  "investment_amount",
+  "amount",
   "sale_target",
   "specialist",
   "town",
@@ -26,12 +26,6 @@
    "in_list_view": 1,
    "label": "Doctor",
    "options": "Doctor"
-  },
-  {
-   "fieldname": "investment_amount",
-   "fieldtype": "Currency",
-   "in_list_view": 1,
-   "label": "Investment Amount"
   },
   {
    "default": "0",
@@ -111,12 +105,18 @@
    "in_list_view": 1,
    "label": "Address",
    "read_only": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Investment Amount"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-16 22:39:54.065935",
+ "modified": "2025-01-18 18:45:11.837923",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Investment Entry Items",
