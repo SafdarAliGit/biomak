@@ -3,7 +3,24 @@
 /* eslint-disable */
 
 frappe.query_reports["Investment And Sales Plan"] = {
-	"filters": [
-
-	]
+    "filters": [
+        {
+            "fieldname": "doctor",
+            "label": __("Doctor"),
+            "fieldtype": "Link",
+            "options": "Doctor"
+        },
+        {
+            "fieldname": "mso",
+            "label": __("MSO"),
+            "fieldtype": "Link",
+            "options": "Medical Sales Officer"
+        },
+        {
+            "fieldname": "rm",
+            "label": "RM",
+            "fieldtype": "Link",
+            "options": "Regional Manager"
+        }
+    ]
 };

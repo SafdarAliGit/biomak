@@ -21,7 +21,6 @@ def get_columns():
         # Monthly Investment Fields
         {"label": "Investment", "fieldname": "investment_amount", "fieldtype": "Currency", "width": 120},
 
-
         # Monthly Sales Fields
         {"label": "Sales", "fieldname": "sale_amount", "fieldtype": "Currency", "width": 120},
         {"label": "Target", "fieldname": "sale_target", "fieldtype": "Currency", "width": 120},
@@ -33,24 +32,55 @@ def get_columns():
 
 def get_data(filters):
     data = []
+
+    # Base query
     query = """
     SELECT
-    i.doctor AS doctor,
-    i.town AS town,
-    i.mso AS mso,
-    i.rm AS rm,
-    i.sale_target,
-    -- Sum for each month from Investment Entry Items
-    i.amount As investment_amount,
-    -- Sum for each month from Sales Entry Items
-    s.amount AS sale_amount
+        i.doctor AS doctor,
+        i.town AS town,
+        i.mso AS mso,
+        i.rm AS rm,
+        i.sale_target,
+        SUM(i.amount) AS investment_amount,
+        SUM(s.amount) AS sale_amount
     FROM
         `tabInvestment Entry Items` i
     JOIN 
         `tabSales Entry Items` s ON i.doctor = s.doctor
+    WHERE
+    """
+
+    # Initialize conditions list
+    conditions = []
+
+    # Append conditions based on filters
+    if filters.get("doctor"):
+        conditions.append("i.doctor = %(doctor)s")
+
+    if filters.get("mso"):
+        conditions.append("i.mso = %(mso)s")
+
+    if filters.get("rm"):
+        conditions.append("i.rm = %(rm)s")
+
+    # Join conditions with AND and add to query
+    if conditions:
+        query += " AND ".join(conditions)
+    else:
+        # If no filters are provided, we can select all records
+        query += "1=1"  # This is a placeholder for no filtering
+
+    # Group by clause
+    query += """
     GROUP BY
         i.doctor, i.town, i.mso, i.rm
     """
-    query_result = frappe.db.sql(query, as_dict=True)
+
+    # Execute the query and fetch results
+    query_result = frappe.db.sql(query, filters, as_dict=True)
+
+    # Extend data with query results
     data.extend(query_result)
+
     return data
+
