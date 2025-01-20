@@ -12,12 +12,15 @@
   "month",
   "year",
   "sale_multiplier",
-  "amount",
+  "investment_amount",
+  "column_break_x5rdf",
   "sale_target",
   "specialist",
   "town",
   "region",
-  "address"
+  "address",
+  "sale_amount",
+  "medical_store"
  ],
  "fields": [
   {
@@ -107,16 +110,31 @@
    "read_only": 1
   },
   {
-   "fieldname": "amount",
+   "fieldname": "investment_amount",
    "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Investment Amount"
+  },
+  {
+   "fieldname": "sale_amount",
+   "fieldtype": "Data",
+   "label": "Sale Amount"
+  },
+  {
+   "fieldname": "medical_store",
+   "fieldtype": "Link",
+   "label": "Medical Store",
+   "options": "Medical Store"
+  },
+  {
+   "fieldname": "column_break_x5rdf",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2025-01-18 18:45:11.837923",
+ "modified": "2025-01-20 19:19:28.947010",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Investment Entry Items",
