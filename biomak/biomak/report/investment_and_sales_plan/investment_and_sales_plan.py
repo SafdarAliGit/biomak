@@ -135,7 +135,7 @@ def get_data(filters):
 
         COALESCE(SUM(i.sale_amount), 0) AS total_sale,
 
-        (COALESCE(SUM(i.investment_amount),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
+        (COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
         "" AS remaining_amount
 
     FROM
@@ -143,10 +143,7 @@ def get_data(filters):
     WHERE
         {where_clause}
     GROUP BY
-        i.doctor, 
-        i.town, 
-        i.mso, 
-        i.rm
+        i.doctor
     """
 
     query_result = frappe.db.sql(query, parameters, as_dict=True)
