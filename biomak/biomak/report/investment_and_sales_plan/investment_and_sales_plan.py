@@ -97,54 +97,86 @@ def get_data(filters):
     where_clause, parameters = get_conditions(filters)
 
     query = f"""
-    SELECT
-        i.doctor AS doctor,
-        i.town AS town,
-        i.mso AS mso,
-        i.rm AS rm,
-        -- Sum for each month from Investment Entry Items
-        SUM(CASE WHEN i.month = 'January' THEN i.investment_amount ELSE 0 END) AS january_investment,
-        SUM(CASE WHEN i.month = 'February' THEN i.investment_amount ELSE 0 END) AS february_investment,
-        SUM(CASE WHEN i.month = 'March' THEN i.investment_amount ELSE 0 END) AS march_investment,
-        SUM(CASE WHEN i.month = 'April' THEN i.investment_amount ELSE 0 END) AS april_investment,
-        SUM(CASE WHEN i.month = 'May' THEN i.investment_amount ELSE 0 END) AS may_investment,
-        SUM(CASE WHEN i.month = 'June' THEN i.investment_amount ELSE 0 END) AS june_investment,
-        SUM(CASE WHEN i.month = 'July' THEN i.investment_amount ELSE 0 END) AS july_investment,
-        SUM(CASE WHEN i.month = 'August' THEN i.investment_amount ELSE 0 END) AS august_investment,
-        SUM(CASE WHEN i.month = 'September' THEN i.investment_amount ELSE 0 END) AS september_investment,
-        SUM(CASE WHEN i.month = 'October' THEN i.investment_amount ELSE 0 END) AS october_investment,
-        SUM(CASE WHEN i.month = 'November' THEN i.investment_amount ELSE 0 END) AS november_investment,
-        SUM(CASE WHEN i.month = 'December' THEN i.investment_amount ELSE 0 END) AS december_investment,
+        SELECT
+            i.doctor AS doctor,
+            i.town AS town,
+            i.mso AS mso,
+            i.rm AS rm,
+            -- Sum for each month from Investment Entry Items
+            SUM(CASE WHEN i.month = 'January' THEN i.investment_amount ELSE 0 END) AS january_investment,
+            SUM(CASE WHEN i.month = 'February' THEN i.investment_amount ELSE 0 END) AS february_investment,
+            SUM(CASE WHEN i.month = 'March' THEN i.investment_amount ELSE 0 END) AS march_investment,
+            SUM(CASE WHEN i.month = 'April' THEN i.investment_amount ELSE 0 END) AS april_investment,
+            SUM(CASE WHEN i.month = 'May' THEN i.investment_amount ELSE 0 END) AS may_investment,
+            SUM(CASE WHEN i.month = 'June' THEN i.investment_amount ELSE 0 END) AS june_investment,
+            SUM(CASE WHEN i.month = 'July' THEN i.investment_amount ELSE 0 END) AS july_investment,
+            SUM(CASE WHEN i.month = 'August' THEN i.investment_amount ELSE 0 END) AS august_investment,
+            SUM(CASE WHEN i.month = 'September' THEN i.investment_amount ELSE 0 END) AS september_investment,
+            SUM(CASE WHEN i.month = 'October' THEN i.investment_amount ELSE 0 END) AS october_investment,
+            SUM(CASE WHEN i.month = 'November' THEN i.investment_amount ELSE 0 END) AS november_investment,
+            SUM(CASE WHEN i.month = 'December' THEN i.investment_amount ELSE 0 END) AS december_investment,
 
-        COALESCE(SUM(i.investment_amount),0) AS total_investment,
-        COALESCE(SUM(i.sale_target),0) AS total_sale_target,
+            COALESCE(SUM(i.investment_amount),0) AS total_investment,
+            COALESCE(SUM(i.sale_target),0) AS total_sale_target,
 
-        -- Sum for each month from Sales Entry Items
-        SUM(CASE WHEN i.month = 'January' THEN i.sale_amount ELSE 0 END) AS january_sales,
-        SUM(CASE WHEN i.month = 'February' THEN i.sale_amount ELSE 0 END) AS february_sales,
-        SUM(CASE WHEN i.month = 'March' THEN i.sale_amount ELSE 0 END) AS march_sales,
-        SUM(CASE WHEN i.month = 'April' THEN i.sale_amount ELSE 0 END) AS april_sales,
-        SUM(CASE WHEN i.month = 'May' THEN i.sale_amount ELSE 0 END) AS may_sales,
-        SUM(CASE WHEN i.month = 'June' THEN i.sale_amount ELSE 0 END) AS june_sales,
-        SUM(CASE WHEN i.month = 'July' THEN i.sale_amount ELSE 0 END) AS july_sales,
-        SUM(CASE WHEN i.month = 'August' THEN i.sale_amount ELSE 0 END) AS august_sales,
-        SUM(CASE WHEN i.month = 'September' THEN i.sale_amount ELSE 0 END) AS september_sales,
-        SUM(CASE WHEN i.month = 'October' THEN i.sale_amount ELSE 0 END) AS october_sales,
-        SUM(CASE WHEN i.month = 'November' THEN i.sale_amount ELSE 0 END) AS november_sales,
-        SUM(CASE WHEN i.month = 'December' THEN i.sale_amount ELSE 0 END) AS december_sales,
+            -- Sum for each month from Sales Entry Items
+            SUM(CASE WHEN i.month = 'January' THEN i.sale_amount ELSE 0 END) AS january_sales,
+            SUM(CASE WHEN i.month = 'February' THEN i.sale_amount ELSE 0 END) AS february_sales,
+            SUM(CASE WHEN i.month = 'March' THEN i.sale_amount ELSE 0 END) AS march_sales,
+            SUM(CASE WHEN i.month = 'April' THEN i.sale_amount ELSE 0 END) AS april_sales,
+            SUM(CASE WHEN i.month = 'May' THEN i.sale_amount ELSE 0 END) AS may_sales,
+            SUM(CASE WHEN i.month = 'June' THEN i.sale_amount ELSE 0 END) AS june_sales,
+            SUM(CASE WHEN i.month = 'July' THEN i.sale_amount ELSE 0 END) AS july_sales,
+            SUM(CASE WHEN i.month = 'August' THEN i.sale_amount ELSE 0 END) AS august_sales,
+            SUM(CASE WHEN i.month = 'September' THEN i.sale_amount ELSE 0 END) AS september_sales,
+            SUM(CASE WHEN i.month = 'October' THEN i.sale_amount ELSE 0 END) AS october_sales,
+            SUM(CASE WHEN i.month = 'November' THEN i.sale_amount ELSE 0 END) AS november_sales,
+            SUM(CASE WHEN i.month = 'December' THEN i.sale_amount ELSE 0 END) AS december_sales,
 
-        COALESCE(SUM(i.sale_amount), 0) AS total_sale,
+            COALESCE(SUM(i.sale_amount), 0) AS total_sale,
 
-        (COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
-        "" AS remaining_amount
+            (COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
+            "" AS remaining_amount
 
-    FROM
-        `tabInvestment Entry Items` i
-    WHERE
-        {where_clause}
-    GROUP BY
-        i.doctor
-    """
+        FROM
+            `tabInvestment Entry Items` i
+        WHERE
+            {where_clause}
+        GROUP BY
+            i.doctor, 
+            i.town, 
+            i.mso, 
+            i.rm
+        HAVING
+            -- Ensure at least one column is non-zero
+            total_investment != 0 OR
+            total_sale_target != 0 OR
+            total_sale != 0 OR
+            january_investment != 0 OR
+            february_investment != 0 OR
+            march_investment != 0 OR
+            april_investment != 0 OR
+            may_investment != 0 OR
+            june_investment != 0 OR
+            july_investment != 0 OR
+            august_investment != 0 OR
+            september_investment != 0 OR
+            october_investment != 0 OR
+            november_investment != 0 OR
+            december_investment != 0 OR
+            january_sales != 0 OR
+            february_sales != 0 OR
+            march_sales != 0 OR
+            april_sales != 0 OR
+            may_sales != 0 OR
+            june_sales != 0 OR
+            july_sales != 0 OR
+            august_sales != 0 OR
+            september_sales != 0 OR
+            october_sales != 0 OR
+            november_sales != 0 OR
+            december_sales != 0
+        """
 
     query_result = frappe.db.sql(query, parameters, as_dict=True)
 
