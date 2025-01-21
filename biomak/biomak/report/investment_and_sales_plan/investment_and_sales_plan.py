@@ -16,7 +16,6 @@ def get_columns():
         {"label": "Town", "fieldname": "town", "fieldtype": "Data", "width": 120},
         {"label": "MSO", "fieldname": "mso", "fieldtype": "Data", "width": 120},
         {"label": "RM", "fieldname": "rm", "fieldtype": "Data", "width": 120},
-        {"label": "Medical Store", "fieldname": "medical_store", "fieldtype": "Data", "width": 180},
 
         # Monthly Investment Fields
         {"label": "I-JAN", "fieldname": "january_investment", "fieldtype": "Data", "width": 120},
@@ -103,8 +102,6 @@ def get_data(filters):
         i.town AS town,
         i.mso AS mso,
         i.rm AS rm,
-        i.medical_store AS medical_store,
-
         -- Sum for each month from Investment Entry Items
         SUM(CASE WHEN i.month = 'January' THEN i.investment_amount ELSE 0 END) AS january_investment,
         SUM(CASE WHEN i.month = 'February' THEN i.investment_amount ELSE 0 END) AS february_investment,
@@ -149,8 +146,7 @@ def get_data(filters):
         i.doctor, 
         i.town, 
         i.mso, 
-        i.rm, 
-        i.medical_store;
+        i.rm
     """
 
     query_result = frappe.db.sql(query, parameters, as_dict=True)
