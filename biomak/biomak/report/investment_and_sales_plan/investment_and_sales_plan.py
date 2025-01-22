@@ -144,8 +144,8 @@ def get_data(filters):
             COALESCE(SUM(i.sale_amount), 0) AS total_sale,
 
             (COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
-            ROUND((COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0))/COALESCE(AVG(i.sale_multiplier),0),2) AS remaining_amount,
-            COALESCE(AVG(i.sale_multiplier),0) AS multiplier
+            ROUND((COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0))/AVG(CASE WHEN i.sale_multiplier <> 0 THEN i.sale_multiplier ELSE NULL END),2) AS remaining_amount,
+            AVG(CASE WHEN i.sale_multiplier <> 0 THEN i.sale_multiplier ELSE NULL END) AS multiplier
 
         FROM
             `tabInvestment Entry Items` i
@@ -184,8 +184,7 @@ def get_data(filters):
             september_sales != 0 OR
             october_sales != 0 OR
             november_sales != 0 OR
-            december_sales != 0 OR
-            multiplier != 0
+            december_sales != 0 
             
             
         """
