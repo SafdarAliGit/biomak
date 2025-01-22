@@ -48,8 +48,7 @@ def get_columns():
         {"label": "S-DEC", "fieldname": "december_sales", "fieldtype": "Data", "width": 120},
         {"label": "Tot. Sales", "fieldname": "total_sale", "fieldtype": "Data", "width": 120},
         {"label": "Remaining Sale", "fieldname": "remaining_sale", "fieldtype": "Data", "width": 120},
-        {"label": "Remaining Amount", "fieldname": "remaining_amount", "fieldtype": "Data", "width": 120},
-        {"label": "Multiplier", "fieldname": "multiplier", "fieldtype": "Data", "width": 120},
+        {"label": "Remaining Amount", "fieldname": "remaining_amount", "fieldtype": "Data", "width": 120}
 
     ]
 
@@ -144,8 +143,7 @@ def get_data(filters):
             COALESCE(SUM(i.sale_amount), 0) AS total_sale,
 
             (COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
-            ROUND((COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0))/AVG(CASE WHEN i.sale_multiplier <> 0 THEN i.sale_multiplier ELSE NULL END),2) AS remaining_amount,
-            AVG(CASE WHEN i.sale_multiplier <> 0 THEN i.sale_multiplier ELSE NULL END) AS multiplier
+            ROUND((COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0))/AVG(CASE WHEN i.sale_multiplier <> 0 THEN i.sale_multiplier ELSE NULL END),2) AS remaining_amount
 
         FROM
             `tabInvestment Entry Items` i
