@@ -184,7 +184,9 @@ def get_data(filters):
             september_sales != 0 OR
             october_sales != 0 OR
             november_sales != 0 OR
-            december_sales != 0
+            december_sales != 0 OR
+            multiplier != 0
+            
             
         """
 
