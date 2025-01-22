@@ -23,6 +23,18 @@ frappe.query_reports["Investment And Sales Plan"] = {
             "label": "RM",
             "fieldtype": "Link",
             "options": "Regional Manager"
+        },
+        {
+            "fieldname":"year",
+            "label":"Year",
+            "fieldtype": "Link",
+            "options": "Years"
+        },
+        {
+            "fieldname":"plan",
+            "label":"Plan",
+            "fieldtype": "Link",
+            "options": "Plan"
         }
     ]
 };

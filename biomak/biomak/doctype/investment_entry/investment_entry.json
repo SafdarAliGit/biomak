@@ -23,8 +23,9 @@
  "fields": [
   {
    "fieldname": "plan",
-   "fieldtype": "Data",
-   "label": "Plan"
+   "fieldtype": "Link",
+   "label": "Plan",
+   "options": "Plan"
   },
   {
    "default": "Today",
@@ -99,7 +100,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-16 23:10:39.690492",
+ "modified": "2025-01-22 19:43:48.546508",
  "modified_by": "Administrator",
  "module": "Biomak",
  "name": "Investment Entry",

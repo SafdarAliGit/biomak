@@ -79,6 +79,12 @@ def get_conditions(filters):
     if filters.get("rm"):
         conditions.append("i.rm = %(rm)s")
         parameters["rm"] = filters["rm"]
+    if filters.get("year"):
+        conditions.append("i.year = %(year)s")
+        parameters["year"] = filters["year"]
+    # if filters.get("plan"):
+    #     conditions.append("i.plan = %(plan)s")
+    #     parameters["plan"] = filters["plan"]
 
     where_clause = " AND ".join(conditions) if conditions else "1=1"
     return where_clause, parameters
@@ -136,7 +142,7 @@ def get_data(filters):
             COALESCE(SUM(i.sale_amount), 0) AS total_sale,
 
             (COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0)) AS remaining_sale,
-            "" AS remaining_amount
+            ROUND((COALESCE(SUM(i.sale_target),0) - COALESCE(SUM(i.sale_amount), 0))/COALESCE(AVG(i.sale_multiplier),0),2) AS remaining_amount
 
         FROM
             `tabInvestment Entry Items` i
@@ -176,6 +182,7 @@ def get_data(filters):
             october_sales != 0 OR
             november_sales != 0 OR
             december_sales != 0
+            
         """
 
     query_result = frappe.db.sql(query, parameters, as_dict=True)
