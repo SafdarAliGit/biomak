@@ -80,12 +80,14 @@ def get_conditions(filters):
     if filters.get("rm"):
         conditions.append("i.rm = %(rm)s")
         parameters["rm"] = filters["rm"]
+
     if filters.get("year"):
         conditions.append("i.year = %(year)s")
         parameters["year"] = filters["year"]
-    # if filters.get("plan"):
-    #     conditions.append("i.plan = %(plan)s")
-    #     parameters["plan"] = filters["plan"]
+
+    if filters.get("plan"):
+        conditions.append("i.plan = %(plan)s")
+        parameters["plan"] = filters["plan"]
 
     where_clause = " AND ".join(conditions) if conditions else "1=1"
     return where_clause, parameters

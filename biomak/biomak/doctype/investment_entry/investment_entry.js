@@ -33,14 +33,16 @@ function copy_values_to_child(frm, cdt, cdn) {
     let rm = frm.doc.rm;
     let month = frm.doc.month;
     let year = frm.doc.year;
+    let plan = frm.doc.plan;
 
     // Validate values and throw an error if any are missing
-    if (!mso || !rm || !month || !year) {
+    if (!mso || !rm || !month || !year || !plan) {
         let missingFields = [];
         if (!mso) missingFields.push("MSO");
         if (!rm) missingFields.push("RM");
         if (!month) missingFields.push("Month");
         if (!year) missingFields.push("Year");
+        if (!plan) missingFields.push("Plan");
         frappe.throw(__(`The following fields are missing: ${missingFields.join(", ")}`));
     }
 
@@ -49,5 +51,6 @@ function copy_values_to_child(frm, cdt, cdn) {
     frappe.model.set_value(cdt, cdn, "rm", rm);
     frappe.model.set_value(cdt, cdn, "month", month);
     frappe.model.set_value(cdt, cdn, "year", year);
+    frappe.model.set_value(cdt, cdn, "plan", plan);
 }
 
